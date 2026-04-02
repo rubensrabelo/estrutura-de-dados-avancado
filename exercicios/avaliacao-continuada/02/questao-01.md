@@ -1,4 +1,6 @@
-### Questão 1
+![alt text](image.png)
+
+### Resposta:
 
 Eu encontrei um pequeno erro no pseudocódigo e corrigi a função para:
 
