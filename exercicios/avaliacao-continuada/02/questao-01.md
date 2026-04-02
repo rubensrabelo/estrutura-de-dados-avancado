@@ -119,9 +119,7 @@ $$
 N(k+1) = C(k+1)
 $$
 
-#### Conclusão
-
-Como os casos base são verdadeiros e o passo de indução foi demonstrado, conclui-se que:
+Portanto, como os casos base são verdadeiros e o passo de indução foi demonstrado, conclui-se que:
 
 $$
 N(h) = C(h)
