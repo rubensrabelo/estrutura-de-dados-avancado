@@ -1,4 +1,4 @@
-![alt text](./img/questao-01.png)
+![Imagem da questão 01](./img/questao-01.png)
 
 ### Resposta:
 
