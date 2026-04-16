@@ -2,29 +2,127 @@
 
 ### Resposta:
 
-A família de árvores escolhida foi "A árvore AVL Fibonachi"
+Eu encontrei um pequeno erro no pseudocódigo e corrigi a função para:
 
-#### Defição formal:
-A árvore AVL de Fibonacci \(F_h\) de altura \(h\) é a árvore binária de busca AVL com o mínimo número de nós \(N(h)\) possível para essa altura, definida recursivamente como segue:
+```bash
+Função F(h)
+    se h <= 1 então
+        retorne h
+    senão
+        retorne F(h-1) + F(h-2)
+```
 
-\[
-\begin{cases}
-N(0) = 1 \\
-N(1) = 2 \\
-N(h) = 1 + N(h-1) + N(h-2), & h \geq 2
-\end{cases}
-\]
+Essa função é recursiva e, ao ser executada, gera uma árvore de Fibonacci, onde cada chamada da função corresponde a um nó da árvore.
 
-Sua estrutura consiste em uma raiz com subárvore esquerda \(F_{h-1}\) (altura \(h-1\)) e subárvore direita \(F_{h-2}\) (altura \(h-2\)), satisfazendo o fator de balanceamento |FB| ≤ 1 em todos os nós. Essa recorrência coincide com a sequência de Fibonacci deslocada, onde \(N(h) = F_{h+2}\) (\(F_0 = 0\), \(F_1 = 1\)).
+Seja:
 
-#### Nó a ser removido:
-Em cada $T_k$, removo a folha mais à direita da subárvore direita ($T_{k-2}$).
+- ( N(h) ) o número de nós da árvore de Fibonacci de altura (h)
+- ( C(h) ) o número de chamadas da função (F(h))
 
-##### Argumento:
-A raiz de $T_k$ tem $bf = -1$ porque o lado esquerdo é 1 nível mais alto que o direito. Quando removo a folha do lado direito, esse lado fica ainda menor, então o $bf$ da raiz vai de $-1$ para $-2$, quebrando o invariante AVL e forçando uma rotação.
+Vamos provar, por indução matemática, que:
 
-Após a rotação, a altura da subárvore da raiz diminui em 1. O nó acima da raiz, que também tinha $|bf| = 1$ (sem nenhuma folga), agora vê sua subárvore encolher e também quebra o invariante — mais uma rotação. Isso se repete em cada nível até o topo.
+$$
+N(h) = C(h)
+$$
 
-Isso acontece porque nenhum nó da árvore tem $bf = 0$, ou seja, não existe folga em lugar nenhum. Qualquer redução de altura em uma subárvore imediatamente desbalanceia o nó pai.
+#### Casos base
 
-Como a árvore tem altura $\mathcal{O}(\log n)$ e ocorre uma rotação por nível, o total de rotações é $\mathcal{O}(\log n)$.
+Para (h = 0), a função executa apenas (F(0)):
+
+$$
+N(0) = 1
+$$
+
+$$
+C(0) = 1
+$$
+
+Para (h = 1):
+
+$$
+N(1) = 1
+$$
+
+$$
+C(1) = 1
+$$
+
+Logo,
+
+$$
+N(0) = C(0) \quad \text{e} \quad N(1) = C(1)
+$$
+
+#### Passo de indução
+
+Ao calcular (F(h)), ocorre:
+
+- 1 chamada da função atual
+- chamadas de (F(h-1))
+- chamadas de (F(h-2))
+
+Portanto, o número de chamadas é:
+
+$$
+C(h) = 1 + C(h-1) + C(h-2)
+$$
+
+Na árvore de Fibonacci ocorre o mesmo:
+
+- 1 nó raiz
+- subárvore de altura (h-1)
+- subárvore de altura (h-2)
+
+Logo, o número de nós é:
+
+$$
+N(h) = 1 + N(h-1) + N(h-2)
+$$
+
+#### Hipótese de indução
+
+Suponha que seja verdadeiro para um valor (k):
+
+$$
+N(k) = C(k)
+$$
+
+e
+
+$$
+N(k-1) = C(k-1)
+$$
+
+### Provar para (k+1)
+
+Partindo da definição de nós:
+
+$$
+N(k+1) = 1 + N(k) + N(k-1)
+$$
+
+Substituindo a hipótese de indução:
+
+$$
+N(k+1) = 1 + C(k) + C(k-1)
+$$
+
+Pela definição de chamadas:
+
+$$
+C(k+1) = 1 + C(k) + C(k-1)
+$$
+
+Portanto,
+
+$$
+N(k+1) = C(k+1)
+$$
+
+Portanto, como os casos base são verdadeiros e o passo de indução foi demonstrado, conclui-se que:
+
+$$
+N(h) = C(h)
+$$
+
+para todo (h > 0), ou seja, o número de nós da árvore de Fibonacci de altura (h) é igual ao número de chamadas da função (F(h)).

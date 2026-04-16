@@ -2,63 +2,117 @@
 
 ### Resposta:
 
-Seja \(b\) o número de nós pretos em qualquer caminho simples de \(x\) até uma folha descendente (propriedade P5).
+Para provar que a altura é \(O(\log n)\), vou mostrar que o número mínimo de nós de uma árvore 2-balanceada de altura \(h\) cresce exponencialmente.
 
-### Caminho Mais Curto
-O caminho de comprimento mínimo contém apenas nós pretos:
+Se o número de nós cresce exponencialmente, então a altura cresce logaritmicamente em função de \(n\).
 
-\[
-\text{Caminho: } x(P) \to P_1(P) \to P_2(P) \to \dots \to P_{b-1}(P) \to \text{NIL}(P)
-\]
 
-Número de nós: \(b\)  
-Número de arestas: \(s = b - 1\)
+#### Número mínimo de nós
 
-**Desigualdade:** \(s \geq b - 1\)
+Seja \(N(h)\) o número mínimo de nós de uma árvore 2-balanceada de altura \(h\).
 
-### Caminho Mais Longo
-O caminho de comprimento máximo alterna cores, respeitando P4 (sem dois nós vermelhos consecutivos):
+Para obter o menor número de nós possível, a árvore deve estar o mais desbalanceada possível, mas ainda respeitando:
 
-\[
-\text{Caminho: } x(P) \to R_1(V) \to P_1(P) \to R_2(V) \to \dots \to P_{b-2}(P) \to \text{NIL}(P)
-\]
+$$
+|h_D(v) - h_E(v)| \leq 2
+$$
 
-- \(b\) nós pretos (fixo por P5)
-- Máximo \(b-1\) nós vermelhos (entre \(b\) pretos, termina em preto)
+Assim, a pior situação ocorre quando:
 
-Total de nós: \(b + (b-1) = 2b - 1\)  
-Número de arestas: \(l \leq (2b - 1) - 1 = 2b - 2\)
+- uma subárvore tem altura \(h-1\)
+- a outra tem altura \(h-3\)
 
-### Prova da Desigualdade Final
+Logo, o número mínimo de nós satisfaz a recorrência:
 
-**Passo 1:** Da análise do caminho curto:  
-\[
-s \geq b - 1
-\]
+$$
+N(h) = 1 + N(h-1) + N(h-3)
+$$
 
-**Passo 2:** Somando 1 em ambos os lados:  
-\[
-s + 1 \geq b \quad \implies \quad b \leq s + 1
-\]
+onde:
 
-**Passo 3:** Multiplicando por 2 (preserva desigualdade):  
-\[
-2b \leq 2(s + 1)
-\]
+- 1 é o nó raiz
+- \(N(h-1)\) é a subárvore maior
+- \(N(h-3)\) é a subárvore menor
 
-**Passo 4:** Subtraindo 2:  
-\[
-2b - 2 \leq 2(s + 1) - 2
-\]
 
-**Passo 5:** Simplificando o lado direito:  
-\[
-2(s + 1) - 2 = 2s + 2 - 2 = 2s
-\]
+#### Casos base
 
-**Passo 6:** Combinando com o limite do caminho longo:  
-\[
-l \leq 2b - 2 \leq 2s
-\]
+Para pequenas alturas temos:
 
-**Conclusão:** \(l \leq 2s\)
+$$
+N(0) = 1
+$$
+
+$$
+N(1) = 2
+$$
+
+$$
+N(2) = 3
+$$
+
+#### Crescimento da função
+
+A recorrência é:
+
+$$
+N(h) = 1 + N(h-1) + N(h-3)
+$$
+
+Podemos escrever:
+
+$$
+N(h) \geq N(h-1) + N(h-3)
+$$
+
+Essa recorrência cresce de forma exponencial, semelhante à sequência de Fibonacci.
+
+Assim, existe uma constante \(c > 1\) tal que:
+
+$$
+N(h) \geq c^h
+$$
+
+#### Relação entre altura e número de nós
+
+Sabemos que o número total de nós da árvore é \(n\), então:
+
+$$
+n \geq N(h)
+$$
+
+Logo:
+
+$$
+n \geq c^h
+$$
+
+Aplicando logaritmo nos dois lados:
+
+$$
+\log n \geq h \log c
+$$
+
+Isolando \(h\):
+
+$$
+h \leq \frac{\log n}{\log c}
+$$
+
+Como \(\log c\) é constante, então:
+
+$$
+h = O(\log n)
+$$
+
+Logo, o número mínimo de nós de uma árvore 2-balanceada cresce exponencialmente com a altura.
+
+Assim, a altura cresce de forma logarítmica em relação ao número de nós.
+
+Portanto,
+
+$$
+h = O(\log n)
+$$
+
+Logo, **toda árvore 2-balanceada possui altura da ordem de \(O(\log n)\)**.
