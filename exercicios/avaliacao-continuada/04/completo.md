@@ -221,7 +221,7 @@ Pela hipótese indutiva: essa subárvore tem \(\geq 2^{k-1}-1\) nós.
 Outra subárvore: \(\geq 0\) nós (NIL possível).  
 
 **Contagem**:
-$$1 + (2^{k-1}-1) + 0 = 2^k-1$$
+$$1 + (2^{k-1}-1) + (2^{k-1}-1) = 2*2^{k-1}-1 = 2^k-1$$
 
 **Não pode ser menor**: Se **ambas** subárvores têm altura negra \(< k-1\), então:  
 $$1 + \max(<k-1, <k-1) < k$$ (contradição).

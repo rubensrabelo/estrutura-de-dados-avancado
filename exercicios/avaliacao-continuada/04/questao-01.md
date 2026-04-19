@@ -9,8 +9,8 @@ A árvore AVL de Fibonacci \(F_h\) de altura \(h\) é a árvore binária de busc
 
 \[
 \begin{cases}
-N(0) = 1 \\
-N(1) = 2 \\
+N(0) = 0 \\
+N(1) = 1 \\
 N(h) = 1 + N(h-1) + N(h-2), & h \geq 2
 \end{cases}
 \]
