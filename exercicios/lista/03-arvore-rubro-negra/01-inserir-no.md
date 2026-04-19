@@ -2,8 +2,7 @@
 
 **Resposta:**
 
-```mermaid
-graph TD
+
     A[26] --> B[17]
     A --> C[41]
 
