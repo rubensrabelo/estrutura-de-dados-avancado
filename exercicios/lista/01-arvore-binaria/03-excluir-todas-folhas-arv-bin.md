@@ -3,7 +3,7 @@
 ```c++
 // Fiz a importação da Struct Node
 
-Node removeLeaf(Node *node) {
+Node* removeLeaf(Node *node) {
     if(node == nullptr)
         return nullptr
 
