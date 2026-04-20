@@ -1,7 +1,3 @@
-Aqui está a versão ajustada, mantendo o estilo que você queria, mas com a notação matemática correta e mais consistente em Markdown:
-
----
-
 ## Questão 06)
 
 ### Resposta
@@ -52,5 +48,3 @@ onde:
 
 * ( N(0) = 1 ) (árvore com apenas a raiz)
 * ( N(1) = 2 ) (raiz e um filho)
-
----
