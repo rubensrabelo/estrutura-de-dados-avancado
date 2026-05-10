@@ -4,16 +4,6 @@
 
 Este projeto implementa uma estrutura de dados **Set (conjunto dinâmico de inteiros)** utilizando uma **Árvore Rubro-Negra (Red-Black Tree)**.
 
-As principais operações possuem complexidade:
-
-- Insert → O(log n)
-- Erase → O(log n)
-- Contains → O(log n)
-- Minimum → O(log n)
-- Maximum → O(log n)
-- Successor → O(log n)
-- Predecessor → O(log n)
-
 
 ## Estrutura do Projeto
 
@@ -23,7 +13,6 @@ SetProject/
 ├── main.cpp
 │
 ├── docs/
-│   ├── README.md
 │   ├── COMPILATION.md
 │   ├── MAIN_USAGE.md
 │   └── TESTS.md
@@ -42,6 +31,7 @@ SetProject/
 │       ├── RBTree.cpp
 │       └── Set.cpp
 │
+├── README.md
 └── Makefile
 ```
 

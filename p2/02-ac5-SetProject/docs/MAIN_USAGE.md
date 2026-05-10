@@ -93,7 +93,7 @@ Entrada:
 Saída:
 
 ```text
-1
+true
 ```
 
 **5. Testar Minimum**

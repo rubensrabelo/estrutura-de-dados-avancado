@@ -101,7 +101,10 @@ int main()
             cout << "Valor: ";
             cin >> value;
 
-            cout << sets[id]->Contains(value) << endl;
+            cout << (sets[id]->Contains(value)
+                         ? "true"
+                         : "false")
+                 << endl;
         }
 
         else if (option == 6)
